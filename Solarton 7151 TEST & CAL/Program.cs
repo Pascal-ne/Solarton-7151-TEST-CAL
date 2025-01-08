@@ -463,7 +463,7 @@ namespace Solarton_7151_TEST___CAL
 
 
 
-                        
+ 
                     }
 
                     serialPort.WriteLine("LOCK OFF");
@@ -592,7 +592,7 @@ namespace Solarton_7151_TEST___CAL
                         //}
                         //  serialPort.WriteLine($"RANGE {RANGE}");
                         Console.Clear();
-                        Console.WriteLine("Connect measurement source. Enter measured counts out of 199000 to continue (refer to program if your not sure)");
+                        Console.WriteLine("Connect measurement source. Enter the known counts out of your source to continue\n (refer to manual if your not sure)(e.g 9.9998kohm = 099998 and 100.003kohm = 100003");
                         string measuredval = Console.ReadLine();
                         serialPort.DiscardInBuffer();
                         Console.WriteLine(measuredval);
