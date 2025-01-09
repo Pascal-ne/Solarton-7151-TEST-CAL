@@ -99,7 +99,7 @@ namespace Solarton_7151_TEST___CAL
                         Console.WriteLine(resp);  //write the response
                         Console.WriteLine("Valid COM PORT");
                     }
-                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one."); Console.ReadLine(); return; }
+                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one."); Console.WriteLine(resp);  Console.ReadLine(); return; }
                     serialPort.WriteLine("++auto 1"); // set the controller to read automatically
 
 
@@ -119,6 +119,7 @@ namespace Solarton_7151_TEST___CAL
                     }
 
                     Console.Clear();
+                    serialPort.WriteLine("TRACK ON");
                     string[] MODES = { "VDC", "VAC", "KOHM", "IDC", "IAC" };
                     string mode = MODES[ShowMenu("Select Mode", MODES)]; // show menu to pick mode
                     serialPort.WriteLine($"MODE {mode}"); //set mode
@@ -503,18 +504,21 @@ namespace Solarton_7151_TEST___CAL
                 {
                     serialPort.Open(); //open the port
                     serialPort.ReadTimeout = 2000;
-                    serialPort.WriteLine("++auto 0"); // set controller not to read automatically
+                    serialPort.WriteLine("++auto 0"); // set controller not to read automatically                                                    //  serialPort.WriteLine("TRACK OFF");
+                    serialPort.DiscardInBuffer(); //discard buffers 
+                    serialPort.DiscardOutBuffer();
                     serialPort.DiscardOutBuffer();
                     serialPort.WriteLine("++ver");
                     Thread.Sleep(1000);
                     string resp = serialPort.ReadLine();
+                   
                     Console.Clear();
                     if (resp.Contains("AR488 GPIB controller"))   
                     {
                         Console.WriteLine(resp);
                         Console.WriteLine("Valid COM PORT");
                     }
-                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one.");Console.ReadLine(); return; }
+                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one.");Console.WriteLine(resp); Console.ReadLine(); return; }
 
                     string response = "";
                     serialPort.WriteLine("++auto 1");//set ti read automatically
