@@ -77,7 +77,7 @@ namespace Solarton_7151_TEST___CAL
             try
             {
                 string[] ports = SerialPort.GetPortNames(); //get current ports
-                string COMport = ports[ShowMenu("Pick the AD488 COM port", ports)]; //put them in a menu
+                string COMport = ports[ShowMenu("Pick the AR488 COM port", ports)]; //put them in a menu
 
                 using (SerialPort serialPort = new SerialPort(COMport, 115200))//initiate serial port
                 {
@@ -99,7 +99,7 @@ namespace Solarton_7151_TEST___CAL
                         Console.WriteLine(resp);  //write the response
                         Console.WriteLine("Valid COM PORT");
                     }
-                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one."); Console.WriteLine(resp); }
+                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one."); Console.ReadLine(); return; }
                     serialPort.WriteLine("++auto 1"); // set the controller to read automatically
 
 
@@ -498,7 +498,7 @@ namespace Solarton_7151_TEST___CAL
             try
             {
                 string[] ports = SerialPort.GetPortNames();//get all the ports that are available
-                string COMport = ports[ShowMenu("Pick the AD488 COM port", ports)];//list out the ports in a menu
+                string COMport = ports[ShowMenu("Pick the AR488 COM port", ports)];//list out the ports in a menu
                 using (SerialPort serialPort = new SerialPort(COMport, 115200)) //start out the serial
                 {
                     serialPort.Open(); //open the port
@@ -514,7 +514,7 @@ namespace Solarton_7151_TEST___CAL
                         Console.WriteLine(resp);
                         Console.WriteLine("Valid COM PORT");
                     }
-                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one."); }
+                    else { Console.WriteLine("Couldn't verify COM port. This may be the wrong one.");Console.ReadLine(); return; }
 
                     string response = "";
                     serialPort.WriteLine("++auto 1");//set ti read automatically
