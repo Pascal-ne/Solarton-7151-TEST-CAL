@@ -1,5 +1,7 @@
 Solartron 7151 test and calibration software for ar488.
 
+Read user manual before use.
+
 Features at a Glance
 
 -Allows someone with an AR488 GPIB controller to take full advantage of the GPIB-only 7151 calibration process.
