@@ -333,7 +333,7 @@ namespace Solarton_7151_TEST___CAL
                                                 times.RemoveAt(0); // remove the first time and datapiont
                                                 datapionts.RemoveAt(0);
                                                 invalid_name = false;
-                                                int exist = ShowMenu("Is this an existing file you would like to add to? (Select No to keep headers)", yesno); // display menu asking if its a new file
+                                                int exist = ShowMenu("Is this an existing file you would like to add to? (Select No to keep header)", yesno); // display menu asking if its a new file
                                                 if (exist == 1)
                                                 {
 
