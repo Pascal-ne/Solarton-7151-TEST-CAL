@@ -20,9 +20,9 @@ using System.Timers;
 // Clean up console --DONE
 //Better error handling -- DONE
 //ensure portability
-//implement counts converter -- RELEASE
+//implement counts converter 
 //implement check at end of calibration 
-//fix COM port checker -- DONE
+//fix COM port checker 
 //fix ranging in calibration
 
 namespace Solarton_7151_TEST___CAL
@@ -86,8 +86,9 @@ namespace Solarton_7151_TEST___CAL
                     serialPort.ReadTimeout = 2000; // set timeout to 2 seconds                 
                                                 
                     string response = "";
-
+                   
                     serialPort.WriteLine("++auto 0"); // set controller to not read automatically to stop tracking measurements
+                    serialPort.WriteLine("TRACK OFF");
                     serialPort.DiscardInBuffer(); //discard buffers 
                     serialPort.DiscardOutBuffer();
                     serialPort.WriteLine("++ver");// send ver command to check if it is the ar488
@@ -332,7 +333,7 @@ namespace Solarton_7151_TEST___CAL
                                                 times.RemoveAt(0); // remove the first time and datapiont
                                                 datapionts.RemoveAt(0);
                                                 invalid_name = false;
-                                                int exist = ShowMenu("Is this an existing file you would like to add to? (would you like to add headers)", yesno); // display menu asking if its a new file
+                                                int exist = ShowMenu("Is this an existing file you would like to add to? (Select No to keep headers)", yesno); // display menu asking if its a new file
                                                 if (exist == 1)
                                                 {
 
@@ -504,7 +505,8 @@ namespace Solarton_7151_TEST___CAL
                 {
                     serialPort.Open(); //open the port
                     serialPort.ReadTimeout = 2000;
-                    serialPort.WriteLine("++auto 0"); // set controller not to read automatically                                                    //  serialPort.WriteLine("TRACK OFF");
+                    serialPort.WriteLine("++auto 0"); // set controller not to read automatically       
+                    serialPort.WriteLine("TRACK OFF");//  serialPort.WriteLine("TRACK OFF");
                     serialPort.DiscardInBuffer(); //discard buffers 
                     serialPort.DiscardOutBuffer();
                     serialPort.DiscardOutBuffer();
